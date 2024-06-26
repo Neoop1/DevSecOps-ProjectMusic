@@ -1,14 +1,9 @@
-FROM node:16.17.0-alpine as builder
+FROM node:16.17.0-alpine
 WORKDIR /app
 COPY ./package.json .
 COPY ./yarn.lock .
 RUN yarn install
 COPY . .
 RUN yarn build
-
-FROM nginx:stable-alpine
-WORKDIR /usr/share/nginx/html
-RUN rm -rf ./*
-COPY --from=builder /app/dist .
-EXPOSE 80
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+EXPOSE 3000
+CMD ["yarn", "start", "--host", "0.0.0.0"]
