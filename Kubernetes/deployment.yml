@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spotify-app
+  labels:
+    app: spotify-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spotify-app
+  template:
+    metadata:
+      labels:
+        app: spotify-app
+    spec:
+      containers:
+      - name: spotify-app
+        image: neoop1/spotify:latest
+        ports:
+        - containerPort: 3000
