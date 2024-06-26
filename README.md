@@ -38,7 +38,6 @@ Episode 6 will be prepared....
 
 1) yarn build
 
-
 2) export NODE_OPTIONS=--openssl-legacy-provider
 
 3) yarn start
